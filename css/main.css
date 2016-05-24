@@ -1,0 +1,16 @@
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.4); }
+
+img {
+  width: 10%; }
+
+i {
+  margin: 2%; }
+
+.bg-head {
+  background: #999; }
+
+.bg-chat {
+  background: url(../image/chat-panel-bg.png); }
+
+/*# sourceMappingURL=main.css.map */

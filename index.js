@@ -10,22 +10,15 @@ app.get('/', function(req, res){
 
 
 io.on('connection', function(socket){
-	console.log('Conexion!!');
+	console.log('Conexion!!'); 
 
 	socket.on('chat', function(_msg){
-		io.emit('nuevo_mensaje', _msg);
+		console.log(_msg); // servidor
+		io.emit('nuevo_mensaje', _msg); //index.html
 	});
 
 });
 
-
-
-
-
-
-
-
-
 http.listen(8080, function () {
-	console.log('Muy bien!, eres un crack, sabes trabajar con node JS');
+	console.log('puerto 8080 ok');
 });

@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+
+    title= "WspAppTheme"
+    //- <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7",crossorigin="anonymous")
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    link(href="../css/icomoon.css",rel="stylesheet")
+    link(rel="stylesheet",href="../css/font-awesome.css")
+    link(rel="stylesheet",href="../css/main.css")
+
+
+    script(type='text/javascript',src="https://code.jquery.com/jquery-1.11.1.js").
+
+  body 
+    .container
+      .row
+        .col-md-4.bg-head
+          img.img-circle(src="../image/gian.jpg")
+          i.icon-message.pull-right
+          i.icon-dots-three-vertical.pull-right
+
+        .col-md-8.bg-head
+          img.img-circle(src="../image/logocodeacademy.png")
+          p Laboratoria Peru
+          p Ana MAria, Aldo , Gian , Mariana, Papu, Tú
+          i.icon-attachment.pull-right
+          i.icon-dots-three-vertical.pull-right
+        .col-md-4
+          input(type="text", name="user", placeholder="Buscar o empezar un chat nuevo")
+          ul
+            li
+              img.img-circle(src="../image/logocodeacademy.png")
+              p Laboratoria Peru
+              p Aldo: Dale dale!
+            li
+              img.img-circle(src="../image/raymi.jpg")
+              p Raymi Saldomado
+              p Aldo: Dale dale!
+            li
+              img.img-circle(src="../image/mariana.jpg")
+              p Mariana Costa
+              p Aldo: Dale dale!
+            li
+              img.img-circle(src="../image/anamaria.jpg")
+              p Ana Maria MArtinez Franklin
+              p Aldo: Dale dale!
+            li
+              img.img-circle(src="../image/rodulfo.jpg")
+              p Rodulfo Prieto
+              p Aldo: Dale dale!
+            li
+              img.img-circle(src="../image/Andrea.jpg")
+              p Andrea Lamas
+              p Aldo: Dale dale!
+        .col-md-8.text-center.bg-chat 
+          i.icon-insert_emoticon.pull-left
+          input(type="text",id="mensaje",class="form-control")
+          button(onclick='enviarMensaje()') Enviar mensaje
+          i.icon-mic.pull-right
