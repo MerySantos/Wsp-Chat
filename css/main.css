@@ -1,21 +1,27 @@
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.4);
-}
-
 img {
-  width: 10%;
+  width: 50px;
+  margin: 2% auto;
 }
 
 i {
   margin: 2%;
+  color: #FFF;
+}
+
+.d-ib {
+  display: inline-block;
 }
 
 .bg-head {
-  background: #999;
+  background: #13697E;
+}
+
+.texto-head {
+  color: #FFF;
 }
 
 .bg-chat {
-  background: url(../image/chat-panel-bg.png);
+  background: url("../image/chat-panel-bg.png");
 }
 
 .list-conectados {
@@ -30,4 +36,41 @@ i {
 
 #chat {
   display: none;
+}
+
+#bienvenida {
+  height: 100vh;
+  border: 5px solid #27518F;
+  background: url("../image/chat-panel-bg.png");
+}
+
+#bienvenida h3 {
+  font-size: 3em;
+}
+
+#bienvenida > div {
+  margin: 20% auto;
+  width: 50%;
+}
+
+#bienvenida button {
+  margin: 2%;
+}
+
+.borde-chat {
+  border: 3px solid #27518F;
+}
+
+.busqueda {
+  margin: 2% 2% 2% 0;
+}
+
+.cuadro-mensaje {
+  background: #13697E;
+  padding: 2%;
+}
+
+.cuadro-mensaje i {
+  font-size: 1.8em;
+  margin-top: 25%;
 }

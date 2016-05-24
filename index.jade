@@ -9,6 +9,7 @@ html(lang="en")
     //- <link href="css/bootstrap.min.css" rel="stylesheet">
 
     link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7",crossorigin="anonymous")
+    link(rel="shorcut icon" href="../image/favicon.png" type="image/png")
     link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     link(href="../css/icomoon.css",rel="stylesheet")
     link(rel="stylesheet",href="../css/font-awesome.min.css")
@@ -21,52 +22,61 @@ html(lang="en")
   body 
     .container
       #bienvenida.well
-        h3 Ingresa tu nombre de usuario para acceder al wsp
-        input.form-control#nombre(type="text", placeholder="Username!!")
-        button.uno(onclick='guardarNombre()') Entrar
+        .text-center
+          h3 Wsp Laboratoria
+          p Ingresa tu nombre de usuario para acceder al wsp
+          input.form-control#nombre(type="text", placeholder="Username!!")
+          button.uno(onclick='guardarNombre()') Entrar
       
       // Chat 
       br
-      .row#chat
+      br
+      br
+      .row#chat.borde-chat.bg-head
         //- primera linea
-        .col-md-4.bg-head  
-          img.img-circle(src="../image/gian.jpg")
-          i.icon-message.pull-right
-          i.icon-dots-three-vertical.pull-right
+        .col-md-4
+          .col-md-12
+            img.img-circle(src="../image/gian.jpg")
+            i.icon-message.pull-right
+            i.icon-dots-three-vertical.pull-right
 
         // primera linea
-        .col-md-8.bg-head
-          img.img-circle(src="../image/logocodeacademy.png")
-          p Laboratoria Peru
-          p Ana MAria, Aldo , Gian , Mariana, Papu, Tú
-          i.icon-attachment.pull-right
-          i.icon-dots-three-vertical.pull-right
+        .col-md-8
+          .col-md-2
+            img.img-circle(src="../image/logocodeacademy.png")
+          .col-md-8
+            h4.texto-head Laboratoria Peru
+            p.texto-head Ana MAria, Aldo , Gian , Mariana, Papu, Tú
+          .col-md-2
+            i.icon-attachment.pull-right
+            i.icon-dots-three-vertical.pull-right
 
         // segunda linea user conected
+      .row.2da-linea
         .col-md-4
-          input(type="text", name="user", placeholder="Buscar o empezar un chat nuevo")
+          input.form-control.busqueda(type="text", name="user", placeholder="Buscar o empezar un chat nuevo")
           ul.list-conectados
-            li
+            li.list-unstyled
               img.img-circle(src="../image/logocodeacademy.png")
               p Laboratoria Peru
               p Aldo: Dale dale!
-            li
+            li.list-unstyled
               img.img-circle(src="../image/raymi.jpg")
               p Raymi Saldomado
               p Aldo: Dale dale!
-            li
+            li.list-unstyled
               img.img-circle(src="../image/mariana.jpg")
               p Mariana Costa
               p Aldo: Dale dale!
-            li
+            li.list-unstyled
               img.img-circle(src="../image/anamaria.jpg")
               p Ana Maria MArtinez Franklin
               p Aldo: Dale dale!
-            li
+            li.list-unstyled
               img.img-circle(src="../image/rodulfo.jpg")
               p Rodulfo Prieto
               p Aldo: Dale dale!
-            li
+            li.list-unstyled
               img.img-circle(src="../image/Andrea.jpg")
               p Andrea Lamas
               p Aldo: Dale dale!
@@ -76,10 +86,13 @@ html(lang="en")
           .historial-mensaje
             ul#lista_mensajes.list-group
           .cuadro-mensaje
-            i.icon-insert_emoticon.pull-left
-            input#mensaje.form-control(type="text")
+            .col-md-1
+              i.icon-insert_emoticon.pull-left
+            .col-md-10
+              input#mensaje.form-control(type="text")
+            .col-md-1
+              i.icon-mic.pull-right
             button(onclick='enviarMensaje()') Enviar mensaje
-            i.icon-mic.pull-right
 
     script.
       var socket = io('/');

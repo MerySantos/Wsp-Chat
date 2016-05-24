@@ -1,17 +1,36 @@
-*{outline:1px solid rgba(255,0,0,0.4);}
-img{width:10%;}
-i{margin:2%;}
+// *{outline:1px solid rgba(255,0,0,0.4);}
 
-$fondo-head: #999;
+$fondo-head: #13697E;
+$texto-head: #FFF;
+
+$fondo-sms: #13697E;
+
+
 $mg-head: 100%;
 $mg-chat-text: #999;
 $height-chat:400px;
 $height-list-group:350px;
+$borde:#27518F;
+$bg-chat:url("../image/chat-panel-bg.png");
 
+img{width:50px; margin:2% auto;}
+i{margin:2%; color:$texto-head;}
+
+.d-ib{display:inline-block;}
 .bg-head{background:$fondo-head;}
-.bg-chat{background:url(../image/chat-panel-bg.png)}
+.texto-head{color:$texto-head;}
+.bg-chat{background:$bg-chat;}
 .list-conectados{ overflow-y:scroll; height:$height-chat;}
 .list-group { overflow-y:scroll; height:$height-list-group;}
 #chat{display:none;}
+#bienvenida{height:100vh; border:5px solid $borde; background:$bg-chat;}
+#bienvenida h3{font-size:3em;}
+#bienvenida>div{margin:20% auto;width:50%;}
+#bienvenida button {margin:2%;}
+.borde-chat{border: 3px solid $borde; }
+// .2da-linea input{width:100%;}
+.busqueda{margin:2% 2% 2% 0;}
+.cuadro-mensaje{background:$fondo-head;padding:2%;}
+.cuadro-mensaje i{font-size:1.8em;margin-top:25%;}
 
-
+// #bienvenida input{ width:50}
