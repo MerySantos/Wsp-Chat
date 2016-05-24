@@ -1,1 +1,98 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WspAppTheme</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><link href="../css/icomoon.css" rel="stylesheet"><link rel="stylesheet" href="../css/font-awesome.css"><link rel="stylesheet" href="../css/main.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script></head><body> <div class="container"><div class="row"><div class="col-md-4 bg-head"><img src="../image/gian.jpg" class="img-circle"><i class="icon-message pull-right"></i><i class="icon-dots-three-vertical pull-right"></i></div><div class="col-md-8 bg-head"><img src="../image/logocodeacademy.png" class="img-circle"><p>Laboratoria Peru</p><p>Ana MAria, Aldo , Gian , Mariana, Papu, Tú</p><i class="icon-attachment pull-right"></i><i class="icon-dots-three-vertical pull-right"></i></div><div class="col-md-4"><input type="text" name="user" placeholder="Buscar o empezar un chat nuevo"><ul><li><img src="../image/logocodeacademy.png" class="img-circle"><p>Laboratoria Peru</p><p>Aldo: Dale dale!</p></li><li><img src="../image/raymi.jpg" class="img-circle"><p>Raymi Saldomado</p><p>Aldo: Dale dale!</p></li><li><img src="../image/mariana.jpg" class="img-circle"><p>Mariana Costa</p><p>Aldo: Dale dale!</p></li><li><img src="../image/anamaria.jpg" class="img-circle"><p>Ana Maria MArtinez Franklin</p><p>Aldo: Dale dale!</p></li><li><img src="../image/rodulfo.jpg" class="img-circle"><p>Rodulfo Prieto</p><p>Aldo: Dale dale!</p></li><li><img src="../image/Andrea.jpg" class="img-circle"><p>Andrea Lamas</p><p>Aldo: Dale dale!</p></li></ul></div><div class="col-md-8 text-center bg-chat"> <i class="icon-insert_emoticon pull-left"></i><input type="text" id="mensaje" class="form-control"><button onclick="enviarMensaje()">Enviar mensaje</button><i class="icon-mic pull-right"></i></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WspAppTheme</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="../css/icomoon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  </head>
+  <body> 
+    <div class="container">
+      <div id="bienvenida" class="well">
+        <h3>Ingresa tu nombre de usuario para acceder al wsp</h3>
+        <input id="nombre" type="text" placeholder="Username!!" class="form-control">
+        <button onclick="guardarNombre()" class="uno">Entrar</button>
+      </div>
+      <!-- Chat --><br>
+      <div id="chat" class="row">
+        <div class="col-md-4 bg-head"> <img src="../image/gian.jpg" class="img-circle"><i class="icon-message pull-right"></i><i class="icon-dots-three-vertical pull-right"></i></div>
+        <!-- primera linea-->
+        <div class="col-md-8 bg-head"><img src="../image/logocodeacademy.png" class="img-circle">
+          <p>Laboratoria Peru</p>
+          <p>Ana MAria, Aldo , Gian , Mariana, Papu, Tú</p><i class="icon-attachment pull-right"></i><i class="icon-dots-three-vertical pull-right"></i>
+        </div>
+        <!-- segunda linea user conected-->
+        <div class="col-sm-4">
+          <input type="text" name="user" placeholder="Buscar o empezar un chat nuevo">
+          <ul class="list-conectados">
+            <li><img src="../image/logocodeacademy.png" class="img-circle">
+              <p>Laboratoria Peru</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+            <li><img src="../image/raymi.jpg" class="img-circle">
+              <p>Raymi Saldomado</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+            <li><img src="../image/mariana.jpg" class="img-circle">
+              <p>Mariana Costa</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+            <li><img src="../image/anamaria.jpg" class="img-circle">
+              <p>Ana Maria MArtinez Franklin</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+            <li><img src="../image/rodulfo.jpg" class="img-circle">
+              <p>Rodulfo Prieto</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+            <li><img src="../image/Andrea.jpg" class="img-circle">
+              <p>Andrea Lamas</p>
+              <p>Aldo: Dale dale!</p>
+            </li>
+          </ul>
+        </div>
+        <!-- segunda linea chat en sí-->
+        <div class="col-sm-8 text-center bg-chat"> 
+          <div class="historial-mensaje">
+            <ul id="lista_mensajes" class="list-group"></ul>
+          </div>
+          <div class="cuadro-mensaje"><i class="icon-insert_emoticon pull-left"></i>
+            <input id="mensaje" type="text" class="form-control">
+            <button onclick="enviarMensaje()">Enviar mensaje</button><i class="icon-mic pull-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var socket = io('/');
+      var nombre;
+      
+      function guardarNombre()
+      {
+        nombre = $('#nombre').val();
+        $('#bienvenida').hide();
+        $('#chat').show();
+        usuario = $('#nombre').val(); 
+      }
+      
+      function enviarMensaje()
+      {
+        socket.emit('chat', "<span class='label label-danger'>" +  nombre + "</span> : " + $('#mensaje').val()  );
+        $('#mensaje').val('');
+        $('#mensaje').focus();
+      }
+      
+      socket.on('nuevo_mensaje', function (_msg)
+      {
+        $('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
+      });
+    </script>
+  </body>
+</html>

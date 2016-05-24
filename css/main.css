@@ -1,16 +1,33 @@
 * {
-  outline: 1px solid rgba(255, 0, 0, 0.4); }
+  outline: 1px solid rgba(255, 0, 0, 0.4);
+}
 
 img {
-  width: 10%; }
+  width: 10%;
+}
 
 i {
-  margin: 2%; }
+  margin: 2%;
+}
 
 .bg-head {
-  background: #999; }
+  background: #999;
+}
 
 .bg-chat {
-  background: url(../image/chat-panel-bg.png); }
+  background: url(../image/chat-panel-bg.png);
+}
 
-/*# sourceMappingURL=main.css.map */
+.list-conectados {
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.list-group {
+  overflow-y: scroll;
+  height: 350px;
+}
+
+#chat {
+  display: none;
+}

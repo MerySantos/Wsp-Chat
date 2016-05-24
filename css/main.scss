@@ -5,8 +5,13 @@ i{margin:2%;}
 $fondo-head: #999;
 $mg-head: 100%;
 $mg-chat-text: #999;
-
+$height-chat:400px;
+$height-list-group:350px;
 
 .bg-head{background:$fondo-head;}
 .bg-chat{background:url(../image/chat-panel-bg.png)}
+.list-conectados{ overflow-y:scroll; height:$height-chat;}
+.list-group { overflow-y:scroll; height:$height-list-group;}
+#chat{display:none;}
+
 

@@ -8,6 +8,9 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/public/index.html');
 });
 
+app.use('/css',express.static('css'));
+app.use('/image',express.static('image'));
+app.use('/fonts',express.static('fonts'));
 
 io.on('connection', function(socket){
 	console.log('Conexion!!'); 
