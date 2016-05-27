@@ -11,69 +11,78 @@
     <link href="../css/icomoon.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.js"></script>
+    <script>
+      <!-- 
+      function makeArray(n) {
+          this.length = n;
+          for (var i=1; i<=n; i++) {
+          this[i] = ""; 
+        }
+        return this;
+      }
+      var i;
+      function imagealeatoire() {
+        i = Math.floor(7 * Math.random() + 1);
+        return image[i];
+      }
+      image = new makeArray(7);
+      image[1]="../image/img1.jpg";
+      image[2]="../image/img2.jpg";
+      image[3]="../image/img3.jpg";
+      image[4]="../image/img4.jpg";
+      image[5]="../image/img5.jpg";
+      image[6]="../image/img6.jpg";
+      image[7]="../image/img7.png";
+      
+      
+      // -->
+      
+      
+      
+    </script>
   </head>
   <body> 
     <div class="container">
       <div id="bienvenida" class="well">
         <div class="text-center">
-          <h3>Wsp Laboratoria</h3>
-          <p>Ingresa tu nombre de usuario para acceder al wsp</p>
-          <input id="nombre" type="text" placeholder="Username!!" class="form-control">
+          <h3 style="font-weight:bold;" class="letra-titulo">Wsp Laboratoria</h3>
+          <p class="letra-texto medida-texto">Ingresa tu nombre de usuario para acceder al wsp</p>
+          <input id="nombre" type="text" placeholder="Username!!" class="text-center form-control d-ib">
           <button onclick="guardarNombre()" class="uno">Entrar</button>
         </div>
       </div>
       <!-- Chat --><br><br><br>
       <div id="chat" class="row borde-chat bg-head">
+        <!-- primera linea-->
         <div class="col-md-4">
-          <div class="col-md-12"><img src="../image/gian.jpg" class="img-circle"><i class="icon-message pull-right"></i><i class="icon-dots-three-vertical pull-right"></i></div>
+          <script language="javascript">document.write("<IMG  SRC=" +imagealeatoire() +" WIDTH=200 HEIGHT=200 BORDER=2PX SOLID BLACK>");</script>
+          <p id="nombreUsuario" class="d-ib texto-head letra-titulo medida-titulo"></p>
         </div>
         <!-- primera linea-->
-        <div class="col-md-8">
-          <div class="col-md-2"><img src="../image/logocodeacademy.png" class="img-circle"></div>
-          <div class="col-md-8">
-            <h4 class="texto-head">Laboratoria Peru</h4>
-            <p class="texto-head">Ana MAria, Aldo , Gian , Mariana, Papu, Tú</p>
+        <div class="col-md-8 bordeblanco">
+          <div class="col-md-1 pd-0">
+            <p></p><img src="../image/logocodeacademy.png" class="img-circle">
           </div>
-          <div class="col-md-2"><i class="icon-attachment pull-right"></i><i class="icon-dots-three-vertical pull-right"></i></div>
+          <div class="col-md-11">
+            <p class="texto-head letra-titulo medida-titulo">Laboratoria Arequipa</p>
+            <p class="texto-head letra-texto medida-texto">Ana MAria, Aldo , Gian , Mariana, Papu, Tú</p>
+          </div>
         </div>
         <!-- segunda linea user conected-->
       </div>
-      <div class="row 2da-linea">
+      <div id="chat2" class="row 2da-linea borde-chat">
         <div class="col-md-4">
           <input type="text" name="user" placeholder="Buscar o empezar un chat nuevo" class="form-control busqueda">
-          <ul class="list-conectados">
-            <li class="list-unstyled"><img src="../image/logocodeacademy.png" class="img-circle">
-              <p>Laboratoria Peru</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-            <li class="list-unstyled"><img src="../image/raymi.jpg" class="img-circle">
-              <p>Raymi Saldomado</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-            <li class="list-unstyled"><img src="../image/mariana.jpg" class="img-circle">
-              <p>Mariana Costa</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-            <li class="list-unstyled"><img src="../image/anamaria.jpg" class="img-circle">
-              <p>Ana Maria MArtinez Franklin</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-            <li class="list-unstyled"><img src="../image/rodulfo.jpg" class="img-circle">
-              <p>Rodulfo Prieto</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-            <li class="list-unstyled"><img src="../image/Andrea.jpg" class="img-circle">
-              <p>Andrea Lamas</p>
-              <p>Aldo: Dale dale!</p>
-            </li>
-          </ul>
+          <ul id="list_conectados" class="list-conectados">       </ul>
         </div>
         <!-- segunda linea chat en sí-->
-        <div class="col-md-8 text-center bg-chat"> 
-          <div class="historial-mensaje">
-            <ul id="lista_mensajes" class="list-group"></ul>
+        <div class="col-md-8 text-center bg-chat">
+          <div class="historial-mensaje text-left">
+            <ul id="lista_mensajes" class="list-group scroll"></ul>
           </div>
           <div class="cuadro-mensaje">
             <div class="col-md-1"><i class="icon-insert_emoticon pull-left"></i></div>
@@ -90,24 +99,52 @@
       var socket = io('/');
       var nombre;
       
+      $(document).ready(function()
+      {
+        $('#nombre').keypress(function(e){
+          if(e.which == 13){
+          guardarNombre();
+          }
+        });
+      
+        $('#mensaje').keypress(function(e){
+          if(e.which == 13){
+          enviarMensaje();
+          }
+        });
+      });
+      
       function guardarNombre()
       {
         nombre = $('#nombre').val();
         $('#bienvenida').hide();
         $('#chat').show();
+        $('#chat2').show();
         usuario = $('#nombre').val(); 
+        $('#nombreUsuario').text(nombre);
+      
+        // Añadir nombre a la conversacion
+        socket.emit('new-user', "<h4 class='nuevousuario letra-titulo'>" +  nombre + "</h4> " );
+      
       }
       
       function enviarMensaje()
       {
-        socket.emit('chat', "<span class='label label-danger'>" +  nombre + "</span> : " + $('#mensaje').val()  );
+        socket.emit('chat', "<span class='nuevo-mensaje medida-texto letra-titulo label label-warning'>" +  nombre + "</span> : " + $('#mensaje').val()  );
         $('#mensaje').val('');
         $('#mensaje').focus();
       }
       
       socket.on('nuevo_mensaje', function (_msg)
+        // Mensaje a chat
       {
-        $('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
+        $('#lista_mensajes').append('<li class="list-group-item li-mensaje">' + _msg + '</li>');
+      });
+      
+      socket.on('integrantes', function (_usuario)
+        // Mensaje a listas
+      {
+        $('#list_conectados').append('<li class="">' + _usuario + '</li>');
       });
     </script>
   </body>

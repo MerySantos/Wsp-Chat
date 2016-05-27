@@ -14,77 +14,85 @@ html(lang="en")
     link(href="../css/icomoon.css",rel="stylesheet")
     link(rel="stylesheet",href="../css/font-awesome.min.css")
     link(rel="stylesheet",href="../css/main.css")
+    link(href="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.css")
 
 
     script(type='text/javascript',src="https://code.jquery.com/jquery-1.11.1.js").
     script(type='text/javascript',src="https://cdn.socket.io/socket.io-1.4.5.js").
+    script(src="https://cdn.jsdelivr.net/embed.js/3.6.2/embed.min.js").
+    script.
+      <!-- 
+      function makeArray(n) {
+          this.length = n;
+          for (var i=1; i<=n; i++) {
+          this[i] = ""; 
+        }
+        return this;
+      }
+      var i;
+      function imagealeatoire() {
+        i = Math.floor(7 * Math.random() + 1);
+        return image[i];
+      }
+      image = new makeArray(7);
+      image[1]="../image/img1.jpg";
+      image[2]="../image/img2.jpg";
+      image[3]="../image/img3.jpg";
+      image[4]="../image/img4.jpg";
+      image[5]="../image/img5.jpg";
+      image[6]="../image/img6.jpg";
+      image[7]="../image/img7.png";
+   
+   
+      // -->
+
+
 
   body 
     .container
       #bienvenida.well
         .text-center
-          h3 Wsp Laboratoria
-          p Ingresa tu nombre de usuario para acceder al wsp
-          input.form-control#nombre(type="text", placeholder="Username!!")
+          h3(style="font-weight:bold;").letra-titulo Wsp Laboratoria
+          p.letra-texto.medida-texto Ingresa tu nombre de usuario para acceder al wsp
+          input.text-center.form-control.d-ib#nombre(type="text", placeholder="Username!!")
           button.uno(onclick='guardarNombre()') Entrar
       
       // Chat 
       br
       br
       br
+
       .row#chat.borde-chat.bg-head
-        //- primera linea
+        // primera linea
         .col-md-4
-          .col-md-12
-            img.img-circle(src="../image/gian.jpg")
-            i.icon-message.pull-right
-            i.icon-dots-three-vertical.pull-right
+          script(language="javascript").
+            document.write("<IMG  SRC=" +imagealeatoire() +" WIDTH=200 HEIGHT=200 BORDER=2PX SOLID BLACK>");
+          p#nombreUsuario.d-ib.texto-head.letra-titulo.medida-titulo
+          //- i.icon-message.pull-right
+          //- i.icon-dots-three-vertical.pull-right
 
         // primera linea
-        .col-md-8
-          .col-md-2
+        .col-md-8.bordeblanco
+          .col-md-1.pd-0
+            p
             img.img-circle(src="../image/logocodeacademy.png")
-          .col-md-8
-            h4.texto-head Laboratoria Peru
-            p.texto-head Ana MAria, Aldo , Gian , Mariana, Papu, Tú
-          .col-md-2
-            i.icon-attachment.pull-right
-            i.icon-dots-three-vertical.pull-right
+          .col-md-11
+            p.texto-head.letra-titulo.medida-titulo Laboratoria Arequipa
+            p.texto-head.letra-texto.medida-texto Ana MAria, Aldo , Gian , Mariana, Papu, Tú
+          //- .col-md-2
+          //-   i.icon-attachment.pull-right
+          //-   i.icon-dots-three-vertical.pull-right
 
         // segunda linea user conected
-      .row.2da-linea
+      .row#chat2.2da-linea.borde-chat
         .col-md-4
           input.form-control.busqueda(type="text", name="user", placeholder="Buscar o empezar un chat nuevo")
-          ul.list-conectados
-            li.list-unstyled
-              img.img-circle(src="../image/logocodeacademy.png")
-              p Laboratoria Peru
-              p Aldo: Dale dale!
-            li.list-unstyled
-              img.img-circle(src="../image/raymi.jpg")
-              p Raymi Saldomado
-              p Aldo: Dale dale!
-            li.list-unstyled
-              img.img-circle(src="../image/mariana.jpg")
-              p Mariana Costa
-              p Aldo: Dale dale!
-            li.list-unstyled
-              img.img-circle(src="../image/anamaria.jpg")
-              p Ana Maria MArtinez Franklin
-              p Aldo: Dale dale!
-            li.list-unstyled
-              img.img-circle(src="../image/rodulfo.jpg")
-              p Rodulfo Prieto
-              p Aldo: Dale dale!
-            li.list-unstyled
-              img.img-circle(src="../image/Andrea.jpg")
-              p Andrea Lamas
-              p Aldo: Dale dale!
+          ul.list-conectados#list_conectados        
 
         // segunda linea chat en sí
-        .col-md-8.text-center.bg-chat 
-          .historial-mensaje
-            ul#lista_mensajes.list-group
+        .col-md-8.text-center.bg-chat
+          .historial-mensaje.text-left
+            ul#lista_mensajes.list-group.scroll
           .cuadro-mensaje
             .col-md-1
               i.icon-insert_emoticon.pull-left
@@ -93,29 +101,60 @@ html(lang="en")
             .col-md-1
               i.icon-mic.pull-right
             button(onclick='enviarMensaje()') Enviar mensaje
-
+   
+      
     script.
       var socket = io('/');
       var nombre;
+
+      $(document).ready(function()
+      {
+        $('#nombre').keypress(function(e){
+          if(e.which == 13){
+          guardarNombre();
+          }
+        });
+
+        $('#mensaje').keypress(function(e){
+          if(e.which == 13){
+          enviarMensaje();
+          }
+        });
+      });
 
       function guardarNombre()
       {
         nombre = $('#nombre').val();
         $('#bienvenida').hide();
         $('#chat').show();
+        $('#chat2').show();
         usuario = $('#nombre').val(); 
+        $('#nombreUsuario').text(nombre);
+
+        // Añadir nombre a la conversacion
+        socket.emit('new-user', "<h4 class='nuevousuario letra-titulo'>" +  nombre + "</h4> " );
+ 
       }
 
       function enviarMensaje()
       {
-        socket.emit('chat', "<span class='label label-danger'>" +  nombre + "</span> : " + $('#mensaje').val()  );
+        socket.emit('chat', "<span class='nuevo-mensaje medida-texto letra-titulo label label-warning'>" +  nombre + "</span> : " + $('#mensaje').val()  );
         $('#mensaje').val('');
         $('#mensaje').focus();
       }
 
       socket.on('nuevo_mensaje', function (_msg)
+        // Mensaje a chat
       {
-        $('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
+        $('#lista_mensajes').append('<li class="list-group-item li-mensaje">' + _msg + '</li>');
       });
+
+      socket.on('integrantes', function (_usuario)
+        // Mensaje a listas
+      {
+        $('#list_conectados').append('<li class="">' + _usuario + '</li>');
+      });
+
+      
 
       

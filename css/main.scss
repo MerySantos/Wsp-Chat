@@ -1,36 +1,63 @@
 // *{outline:1px solid rgba(255,0,0,0.4);}
+$letra-titulo: serif;
+$medida-titulo:22px;
+
+$letra-texto:sans-serif;
+$medida-texto:15px;
 
 $fondo-head: #13697E;
 $texto-head: #FFF;
-
+$color-user:#13697E;
 $fondo-sms: #13697E;
 
 
 $mg-head: 100%;
 $mg-chat-text: #999;
-$height-chat:400px;
+$height-chat:360px;
 $height-list-group:350px;
-$borde:#27518F;
+$borde:#13697E;
 $bg-chat:url("../image/chat-panel-bg.png");
 
-img{width:50px; margin:2% auto;}
-i{margin:2%; color:$texto-head;}
+img{width:60px;height:60px; margin: 3% auto;}
+i{margin:3%; color:$texto-head;}
+
+.letra-titulo{font-family:$letra-titulo; text-transform: uppercase;margin:3% 2%;}
+.letra-texto{font-family:$letra-texto;}
+.medida-titulo{font-size:$medida-titulo;}
+.medida-texto{font-size:$medida-texto;}
 
 .d-ib{display:inline-block;}
+.mt-10{margin-top:10%;}
+.pt-3{padding-top:5%;}
+.pd_3{padding-top:4%;}
+.pd-0{padding:0;}
+
 .bg-head{background:$fondo-head;}
+.bordeblanco{border-left:1px solid white;}
+
 .texto-head{color:$texto-head;}
-.bg-chat{background:$bg-chat;}
+.bg-chat{background:$bg-chat;border-left:1px solid $borde;}
+
 .list-conectados{ overflow-y:scroll; height:$height-chat;}
-.list-group { overflow-y:scroll; height:$height-list-group;}
-#chat{display:none;}
-#bienvenida{height:100vh; border:5px solid $borde; background:$bg-chat;}
+.historial-mensaje{overflow-y:scroll;height:$height-list-group;}
+.nuevo-mensaje{margin:10% auto}
+
+#chat,#chat2{display:none;}
+#bienvenida{height:100vh; border:5px solid $borde; background:$bg-chat;position:relative}
 #bienvenida h3{font-size:3em;}
-#bienvenida>div{margin:20% auto;width:50%;}
+#bienvenida>div{margin:auto;width:50%;position: absolute;top: 45%; left: 50%;transform: translate(-50%, -50%);}
 #bienvenida button {margin:2%;}
-.borde-chat{border: 3px solid $borde; }
+#nombre{width:50%}
+.borde-chat{border: 1px solid $borde; }
+#chat2>div{padding:0;}
 // .2da-linea input{width:100%;}
-.busqueda{margin:2% 2% 2% 0;}
+.busqueda{margin:3% 0;}
 .cuadro-mensaje{background:$fondo-head;padding:2%;}
 .cuadro-mensaje i{font-size:1.8em;margin-top:25%;}
 
+.nuevousuario{ color:$color-user; font-weight:bold;}
+.li-mensaje{width:70%; margin:1% 1% 1% 2%;}
 // #bienvenida input{ width:50}
+.scroll,.historial-mensaje{transform:rotateX(180deg);
+    -ms-transform:rotateX(180deg); /* IE 9 */
+    -webkit-transform:rotateX(180deg); /* Safari and Chrome */}

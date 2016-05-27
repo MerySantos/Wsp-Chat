@@ -1,19 +1,58 @@
 img {
-  width: 50px;
-  margin: 2% auto;
+  width: 60px;
+  height: 60px;
+  margin: 3% auto;
 }
 
 i {
-  margin: 2%;
+  margin: 3%;
   color: #FFF;
+}
+
+.letra-titulo {
+  font-family: serif;
+  text-transform: uppercase;
+  margin: 3% 2%;
+}
+
+.letra-texto {
+  font-family: sans-serif;
+}
+
+.medida-titulo {
+  font-size: 22px;
+}
+
+.medida-texto {
+  font-size: 15px;
 }
 
 .d-ib {
   display: inline-block;
 }
 
+.mt-10 {
+  margin-top: 10%;
+}
+
+.pt-3 {
+  padding-top: 5%;
+}
+
+.pd_3 {
+  padding-top: 4%;
+}
+
+.pd-0 {
+  padding: 0;
+}
+
 .bg-head {
   background: #13697E;
+}
+
+.bordeblanco {
+  border-left: 1px solid white;
 }
 
 .texto-head {
@@ -22,26 +61,32 @@ i {
 
 .bg-chat {
   background: url("../image/chat-panel-bg.png");
+  border-left: 1px solid #13697E;
 }
 
 .list-conectados {
   overflow-y: scroll;
-  height: 400px;
+  height: 360px;
 }
 
-.list-group {
+.historial-mensaje {
   overflow-y: scroll;
   height: 350px;
 }
 
-#chat {
+.nuevo-mensaje {
+  margin: 10% auto;
+}
+
+#chat, #chat2 {
   display: none;
 }
 
 #bienvenida {
   height: 100vh;
-  border: 5px solid #27518F;
+  border: 5px solid #13697E;
   background: url("../image/chat-panel-bg.png");
+  position: relative;
 }
 
 #bienvenida h3 {
@@ -49,20 +94,32 @@ i {
 }
 
 #bienvenida > div {
-  margin: 20% auto;
+  margin: auto;
   width: 50%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #bienvenida button {
   margin: 2%;
 }
 
+#nombre {
+  width: 50%;
+}
+
 .borde-chat {
-  border: 3px solid #27518F;
+  border: 1px solid #13697E;
+}
+
+#chat2 > div {
+  padding: 0;
 }
 
 .busqueda {
-  margin: 2% 2% 2% 0;
+  margin: 3% 0;
 }
 
 .cuadro-mensaje {
@@ -73,4 +130,22 @@ i {
 .cuadro-mensaje i {
   font-size: 1.8em;
   margin-top: 25%;
+}
+
+.nuevousuario {
+  color: #13697E;
+  font-weight: bold;
+}
+
+.li-mensaje {
+  width: 70%;
+  margin: 1% 1% 1% 2%;
+}
+
+.scroll, .historial-mensaje {
+  transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  /* IE 9 */
+  -webkit-transform: rotateX(180deg);
+  /* Safari and Chrome */
 }
